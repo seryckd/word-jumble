@@ -1,0 +1,105 @@
+<html>
+
+   <head>
+      <link href="css/card-layout.css" rel="stylesheet" type="text/css" media="all">
+      <link href="css/spinner.css" rel="stylesheet" type="text/css" media="all">
+   </head>
+   <body>
+
+      <header class="masthead clear">
+        <div class="centered">
+          <div class="site-branding">
+             <!-- Anything else here mucks up the page layout -->
+            <h1 class="site-title">Word Unjumble</h1>
+          </div>
+        </div>
+      </header>
+
+      <main>
+
+         <div class="centered">
+            <section class="cards">
+               <article class="card">
+                  <div class="card-content">
+
+                     <p>Type the jumbled word</p>
+                     <div>
+                        <input type="text" id="jumbledWord"/>
+                        <button type="button" id="unjumble">Unjumble</button>
+                     </div>
+
+                     <p>Unjumbled word(s):</p>
+                     <div>
+                        <ul id="spinner" style="display: none">
+                           <div class="spinner">
+                             <div class="rect1"></div>
+                             <div class="rect2"></div>
+                             <div class="rect3"></div>
+                             <div class="rect4"></div>
+                             <div class="rect5"></div>
+                           </div>
+                        </ul>
+                        <div id="result"/>
+                     </div>
+                  </div>
+               </article>
+            </section>
+         </div>
+
+      </main>
+
+      <script type="module">
+         import { unjumble } from './unjumble.js';
+
+         function res() {
+            return new Promise((resolve, rejcet) => {
+               resolve(unjumble(document.getElementById("jumbledWord").value));
+            });
+         }
+
+         document.getElementById("unjumble").addEventListener('click', function() {
+
+            let resultEl = document.getElementById("result");
+
+            resultEl.replaceChild(document.createElement("div"), resultEl.firstChild);
+            document.getElementById("spinner").style.display = 'block';
+
+            setTimeout(() => {
+
+               res().then((result) => {
+                  document.getElementById("spinner").style.display = 'none';
+
+                  let lb = document.createElement("ul");
+
+                  if (result.length > 0) {
+                     result.forEach(r => {
+                        let li = document.createElement("li");
+                        li.innerHTML = r;
+                        lb.appendChild(li);
+                     });
+                  } else {
+                     let li = document.createElement("li");
+                     li.innerHTML = "<i>no word found</i>";
+                     lb.appendChild(li);
+                  }
+
+                  resultEl.replaceChild(lb, resultEl.firstChild);
+
+                  document.getElementById("spinner").style.display = 'none';
+               });
+
+            }, 1);
+
+         });
+
+         // Make the button be clicked when user pressed 'enter'
+         document.querySelector("#jumbledWord").addEventListener("keyup", event => {
+             if (event.key !== "Enter")
+                return;
+             document.querySelector("#unjumble").click();
+             event.preventDefault();
+         });
+
+      </script>
+   </body>
+</html>
