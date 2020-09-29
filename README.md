@@ -2,6 +2,8 @@
 
 Unjumbles a word up to 10 characters.
 
+[View on GitHub](https://seryckd.github.io/word-jumble)
+
 Brute force algorithm that tries every combination of the length of the word in a dictionary.
 
 It was written because I was stuck on a 'jumble' puzzle in the newspaper and I started to think
