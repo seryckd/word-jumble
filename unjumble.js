@@ -26,8 +26,8 @@ export function unjumble(jumble) {
    return attempts;
 }
 
-//document.getElementById('result').innerHTML = unjumble('eno');
-
-//document.getElementById('result').innerHTML = unjumble('het');
-
-//unjumble('eno');
+export function unjumblePromise(jumble) {
+   return new Promise(function(resolve, reject) {
+      resolve(unjumble(jumble));
+   });
+}

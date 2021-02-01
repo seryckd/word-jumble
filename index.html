@@ -49,24 +49,22 @@
       </main>
 
       <script type="module">
-         import { unjumble } from './unjumble.js';
-
-         function res() {
-            return new Promise((resolve, rejcet) => {
-               resolve(unjumble(document.getElementById("jumbledWord").value));
-            });
-         }
+         import { unjumble, unjumblePromise } from './unjumble.js';
 
          document.getElementById("unjumble").addEventListener('click', function() {
+
+            // Show the spinner
 
             let resultEl = document.getElementById("result");
 
             resultEl.replaceChild(document.createElement("div"), resultEl.firstChild);
             document.getElementById("spinner").style.display = 'block';
 
+            // Setup a callback to do the processing, as it may take time
+            // and we want to make the sure spinner shows
             setTimeout(() => {
-
-               res().then((result) => {
+ 
+               unjumblePromise(document.getElementById("jumbledWord").value).then((result) => {
                   document.getElementById("spinner").style.display = 'none';
 
                   let lb = document.createElement("ul");
@@ -74,6 +72,7 @@
                   if (result.length > 0) {
                      result.forEach(r => {
                         let li = document.createElement("li");
+                        // textContent is safer as it strips out tags
                         li.innerHTML = r;
                         lb.appendChild(li);
                      });
@@ -84,11 +83,9 @@
                   }
 
                   resultEl.replaceChild(lb, resultEl.firstChild);
-
-                  document.getElementById("spinner").style.display = 'none';
                });
 
-            }, 1);
+            }, 250);
 
          });
 
