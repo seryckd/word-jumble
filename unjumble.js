@@ -7,6 +7,7 @@ import { words } from './data/corncob.js';
 export function unjumble(jumble) {
 
    let attempts = [];
+   jumble = jumble.toLowerCase();
 
    for (let row of makeCombinationIterator(jumble.length)) {
 
