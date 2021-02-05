@@ -6,46 +6,36 @@
    </head>
    <body>
 
-      <header class="masthead clear">
-        <div class="centered">
-          <div class="site-branding">
-             <!-- Anything else here mucks up the page layout -->
-            <h1 class="site-title">Word Unjumble</h1>
-          </div>
-        </div>
+      <header class="masthead">
+         <h1 class="site-title">Word Unjumble</h1>
       </header>
 
       <main>
 
-         <div class="centered">
-            <section class="cards">
-               <article class="card">
-                  <div class="card-content">
+         <div class="parent">
+            <div class="card">
+               <p>Type the jumbled word</p>
+               <div>
+                  <input type="text" id="jumbledWord"/>
+                  <button type="button" id="unjumble">Unjumble</button>
+               </div>
+               <p>Type the jumbled word</p>
 
-                     <p>Type the jumbled word</p>
-                     <div>
-                        <input type="text" id="jumbledWord"/>
-                        <button type="button" id="unjumble">Unjumble</button>
+               <p>Unjumbled word(s):</p>
+               <div>
+                  <ul id="spinner" style="display: none">
+                     <div class="spinner">
+                       <div class="rect1"></div>
+                       <div class="rect2"></div>
+                       <div class="rect3"></div>
+                       <div class="rect4"></div>
+                       <div class="rect5"></div>
                      </div>
+                  </ul>
+                  <div id="result"/>
 
-                     <p>Unjumbled word(s):</p>
-                     <div>
-                        <ul id="spinner" style="display: none">
-                           <div class="spinner">
-                             <div class="rect1"></div>
-                             <div class="rect2"></div>
-                             <div class="rect3"></div>
-                             <div class="rect4"></div>
-                             <div class="rect5"></div>
-                           </div>
-                        </ul>
-                        <div id="result"/>
-                     </div>
-                  </div>
-               </article>
-            </section>
+               </div>
          </div>
-
       </main>
 
       <script type="module">
@@ -98,5 +88,6 @@
          });
 
       </script>
+
    </body>
 </html>
