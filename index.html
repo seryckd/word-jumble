@@ -1,7 +1,7 @@
 <html>
 
    <head>
-      <link href="css/card-layout.css" rel="stylesheet" type="text/css" media="all">
+      <link href="css/layout.css" rel="stylesheet" type="text/css">
       <link href="css/spinner.css" rel="stylesheet" type="text/css" media="all">
    </head>
    <body>
@@ -12,30 +12,29 @@
 
       <main>
 
-         <div class="parent">
-            <div class="card">
-               <p>Type the jumbled word</p>
-               <div>
-                  <input type="text" id="jumbledWord"/>
-                  <button type="button" id="unjumble">Unjumble</button>
-               </div>
-               <p>Type the jumbled word</p>
+         <div class="card">
+            <p>Type the jumbled word</p>
+            <div>
+               <input type="text" id="jumbledWord"/>
+               <button type="button" id="unjumble">Unjumble</button>
+            </div>
 
-               <p>Unjumbled word(s):</p>
-               <div>
-                  <ul id="spinner" style="display: none">
-                     <div class="spinner">
-                       <div class="rect1"></div>
-                       <div class="rect2"></div>
-                       <div class="rect3"></div>
-                       <div class="rect4"></div>
-                       <div class="rect5"></div>
-                     </div>
-                  </ul>
-                  <div id="result"/>
+            <p>Unjumbled word(s):</p>
+            <div>
+               <ul id="spinner" style="display: none">
+                  <div class="spinner">
+                     <div class="rect1"></div>
+                     <div class="rect2"></div>
+                     <div class="rect3"></div>
+                     <div class="rect4"></div>
+                     <div class="rect5"></div>
+                  </div>
+               </ul>
+               <div id="result"/>
 
-               </div>
+            </div>
          </div>
+
       </main>
 
       <script type="module">
